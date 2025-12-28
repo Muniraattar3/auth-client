@@ -1,0 +1,17 @@
+import api from "../api/api";
+
+export const getAllUsers = async () => {
+  const res = await api.get("/users");
+  return res.data;
+};
+
+export const deleteUser = async (id) => {
+  const res = await api.delete(`/users/${id}`);
+  return res.data;
+};
+
+export const updateUserRole = async (id, role) => {
+  const res = await api.put(`/users/${id}`, { role });
+  return res.data;
+};
+ 
