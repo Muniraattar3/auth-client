@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: "https://user-management-api.onrender.com/api",
+    withCredentials: true
 });
 
 api.interceptors.request.use((config) => {
