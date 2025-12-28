@@ -27,7 +27,15 @@ function App() {
               <AdminDashboard />
             </AdminRoute>
           }
-        />
+/>
+         {/* <Route 
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />*/}
       </Routes>
     </BrowserRouter>
   )
