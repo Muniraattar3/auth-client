@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import AdminRoute from "./components/AdminRoute";
@@ -36,6 +36,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminDashboard />
+    </AdminRoute>
+  }
+/>
+
       </Routes>
     </BrowserRouter>
   )

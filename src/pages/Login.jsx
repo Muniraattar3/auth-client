@@ -2,28 +2,28 @@ import { useState } from "react";
 import { loginUser } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
- 
   e.preventDefault();
-  try {
-  const res = await loginUser(email, password);
 
-  if(res.user.role ==="admin"){
-      navigate("/admin/dashboard");
-  } else {
-    setError("Access denied. Admin only");
-    localStorage.removeItem("user")
+  try {
+    const user = await loginUser(email, password);
+
+    if (user.role === "admin") {
+      navigate("/admin");
+    } else {
+      alert("Access denied. Admins only.");
+    }
+  } catch (err) {
+    setError("Invalid credentials");
   }
-} catch(err){
-    setError(err.response?.data.message || "Login failed")
-}
-  }
+};
+
     return (
         <form onSubmit={handleSubmit}>
             <h2>Login</h2>
@@ -48,4 +48,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default login;

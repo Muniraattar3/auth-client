@@ -13,10 +13,10 @@ export const registerUser = async (name, email, password) => {
 export const loginUser = async (email, password) => {
   const res = await api.post("/users/login", { email, password });
 
-  // Save user info only (NO token)
+  // save user ONLY
   localStorage.setItem("user", JSON.stringify(res.data.user));
 
-  return res.data;
+  return res.data.user;
 };
 
 
